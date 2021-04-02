@@ -32,6 +32,7 @@ type IState = {
   offset: number;
   crossOffset: number;
   shouldOverlapWithTrigger: boolean;
+  shouldCloseOnOutsideClick: boolean;
 };
 
 const initialState: IState = {
@@ -45,6 +46,7 @@ const initialState: IState = {
   offset: 0,
   crossOffset: 0,
   shouldOverlapWithTrigger: false,
+  shouldCloseOnOutsideClick: true,
 };
 
 const generateCodeString = ({
@@ -55,6 +57,7 @@ const generateCodeString = ({
   crossOffset,
   shouldOverlapWithTrigger,
   on,
+  shouldCloseOnOutsideClick,
 }: IState) => {
   const placement =
     statePlacement.main +
@@ -73,6 +76,11 @@ const generateCodeString = ({
       ${
         shouldOverlapWithTrigger
           ? `shouldOverlapWithTrigger={${shouldOverlapWithTrigger}}`
+          : ""
+      }
+      ${
+        shouldCloseOnOutsideClick
+          ? `shouldCloseOnOutsideClick={${shouldCloseOnOutsideClick}}`
           : ""
       }
     >
@@ -118,7 +126,8 @@ const reducer = (state: IState, action: IAction): IState => {
       return { ...state, hasBackdrop: action.payload };
     case "SHOULD_OVERLAP_WITH_TRIGGER":
       return { ...state, shouldOverlapWithTrigger: action.payload };
-
+    case "SHOULD_CLOSE_ON_OUTSIDE_CLICK":
+      return { ...state, shouldCloseOnOutsideClick: action.payload };
     default:
       return state;
   }
@@ -233,6 +242,7 @@ const PopoverDemo = ({ state }: { state: IState }) => {
       offset={state.offset}
       crossOffset={state.crossOffset}
       shouldOverlapWithTrigger={state.shouldOverlapWithTrigger}
+      shouldCloseOnOutsideClick={state.shouldCloseOnOutsideClick}
       trigger={
         <Pressable style={{ maxWidth: 120, marginHorizontal: "auto" }}>
           <Box bg="emerald.500" color="gray.800" px={4} py={4} borderRadius={4}>
@@ -367,6 +377,20 @@ const SelectionControls = ({
             <Text mx={1}>overlap with trigger</Text>
           </Checkbox>
         </Box>
+        {Platform.OS === "web" && (
+          <Checkbox
+            value="shouldCloseOnOutsideClick"
+            isChecked={state.shouldCloseOnOutsideClick}
+            onChange={(value: boolean) => {
+              dispatch({
+                type: "SHOULD_CLOSE_ON_OUTSIDE_CLICK",
+                payload: value,
+              });
+            }}
+          >
+            <Text mx={1}>close on outside click</Text>
+          </Checkbox>
+        )}
       </Box>
       <Box>
         <Heading size="lg" my={2}>
