@@ -129,41 +129,55 @@ const Header = () => {
     <Box width="100%">
       <SafeAreaView>
         <HStack
-          justifyContent="center"
+          justifyContent="space-between"
           alignItems="center"
+          px={4}
           py={2}
           borderBottomWidth={1}
           space={2}
           borderBottomColor="gray.100"
         >
-          <Heading size="md" alignItems="center" textAlign="center">
-            React native popper
-          </Heading>
-          {Platform.OS === "web" ? (
+          <HStack space={2} alignItems="center">
+            <Heading size="md" alignItems="center" textAlign="center">
+              React native popper
+            </Heading>
+            {Platform.OS === "web" ? (
+              <Text
+                hrefAttrs={{ target: "blank" }}
+                height={8}
+                href="https://github.com/intergalacticspacehighway/react-native-popper#react-native-popper"
+              >
+                <Icon
+                  type="AntDesign"
+                  name="github"
+                  size={8}
+                  color="emerald.500"
+                />
+              </Text>
+            ) : (
+              <Link
+                height={8}
+                href="https://github.com/intergalacticspacehighway/react-native-popper#react-native-popper"
+              >
+                <Icon
+                  type="AntDesign"
+                  name="github"
+                  size={8}
+                  color="emerald.500"
+                />
+              </Link>
+            )}
+          </HStack>
+          {Platform.OS === "web" && (
             <Text
               hrefAttrs={{ target: "blank" }}
-              height={8}
-              href="https://github.com/intergalacticspacehighway/react-native-popper"
+              href="https://expo.io/@nishanbende/projects/react-native-popper-playground"
+              bold
+              color="emerald.500"
+              fontSize={"md"}
             >
-              <Icon
-                type="AntDesign"
-                name="github"
-                size={8}
-                color="emerald.500"
-              />
+              Run it on Android/iOS
             </Text>
-          ) : (
-            <Link
-              height={8}
-              href="https://github.com/intergalacticspacehighway/react-native-popper"
-            >
-              <Icon
-                type="AntDesign"
-                name="github"
-                size={8}
-                color="emerald.500"
-              />
-            </Link>
           )}
         </HStack>
       </SafeAreaView>
@@ -322,7 +336,7 @@ const SelectionControls = ({
           </Box>
         </Box>
       </Box>
-      <Box justifyContent="space-around" flexDirection="row">
+      <Box justifyContent="space-around" flexDirection="row" flexWrap="wrap">
         <Checkbox
           value="hasArrow"
           isChecked={state.hasArrow}
@@ -342,15 +356,17 @@ const SelectionControls = ({
         >
           <Text mx={1}>Has Backdrop</Text>
         </Checkbox>
-        <Checkbox
-          value="shouldOverlapWithTrigger"
-          isChecked={state.shouldOverlapWithTrigger}
-          onChange={(value: boolean) => {
-            dispatch({ type: "SHOULD_OVERLAP_WITH_TRIGGER", payload: value });
-          }}
-        >
-          <Text mx={1}>overlap with trigger</Text>
-        </Checkbox>
+        <Box>
+          <Checkbox
+            value="shouldOverlapWithTrigger"
+            isChecked={state.shouldOverlapWithTrigger}
+            onChange={(value: boolean) => {
+              dispatch({ type: "SHOULD_OVERLAP_WITH_TRIGGER", payload: value });
+            }}
+          >
+            <Text mx={1}>overlap with trigger</Text>
+          </Checkbox>
+        </Box>
       </Box>
       <Box>
         <Heading size="lg" my={2}>
