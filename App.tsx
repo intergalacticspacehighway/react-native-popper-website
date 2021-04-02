@@ -346,7 +346,6 @@ const SelectionControls = ({
           value="shouldOverlapWithTrigger"
           isChecked={state.shouldOverlapWithTrigger}
           onChange={(value: boolean) => {
-            console.log("al ", value);
             dispatch({ type: "SHOULD_OVERLAP_WITH_TRIGGER", payload: value });
           }}
         >
