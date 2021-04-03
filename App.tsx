@@ -46,7 +46,7 @@ const initialState: IState = {
   offset: 0,
   crossOffset: 0,
   shouldOverlapWithTrigger: false,
-  shouldCloseOnOutsideClick: true,
+  shouldCloseOnOutsideClick: false,
 };
 
 const generateCodeString = ({
