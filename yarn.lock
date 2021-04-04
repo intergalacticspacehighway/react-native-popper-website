@@ -6384,10 +6384,10 @@ react-native-material-ripple@^0.9.1:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-popper@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/react-native-popper/-/react-native-popper-0.1.6.tgz#6c3cc14c9bee0d26b838581759a1b540edb26e69"
-  integrity sha512-MEukCK9lud9AxXYFLFa3Gk7XwT+pXFBx/Fcji85DDDfJJcoWfCqX71OO9QM8SikXK03x7bwfzeI9xifQLimkbA==
+react-native-popper@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/react-native-popper/-/react-native-popper-0.1.8.tgz#293c8fc6ff8886d8a1b8e1449fc676f55d51f965"
+  integrity sha512-6z7KafgAMcniOg2531G3glohBxAt5hoo682vY9iiddf4OFZBP4HV1jKagE9CHOc0g0+b/rc65n/8PuBLozblGQ==
   dependencies:
     "@react-native-aria/focus" "^0.2.4"
     "@react-native-aria/overlays" "^0.2.10"
